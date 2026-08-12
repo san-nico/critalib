@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@layer base {
+	html {
+		color-scheme: light;
+	}
+
+	body {
+		@apply bg-stone-100 text-stone-900;
+	}
+}

@@ -1,0 +1,28 @@
+---
+interface Props {
+	message: string;
+	kind?: "error" | "info";
+}
+
+const { message, kind = "error" } = Astro.props;
+
+const styles = {
+	error: {
+		container: "border-red-300 bg-red-50 text-red-700",
+		badge: "bg-red-600",
+		label: "Error",
+	},
+	info: {
+		container: "border-sky-300 bg-sky-50 text-sky-700",
+		badge: "bg-sky-600",
+		label: "Info",
+	},
+}[kind];
+---
+
+<div class="flex items-start gap-3 rounded-lg border px-4 py-3 text-sm {styles.container}" role="alert">
+	<span class="mt-0.5 rounded-full px-2 py-0.5 text-xs font-semibold text-white {styles.badge}">
+		{styles.label}
+	</span>
+	<p>{message}</p>
+</div>

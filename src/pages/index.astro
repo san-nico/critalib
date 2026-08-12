@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PdfUploader from "../components/PdfUploader.astro";
+import Feature from "../components/Feature.astro";
+---
+
+<BaseLayout>
+	<section class="mb-10 max-w-2xl">
+		<h1 class="text-4xl font-bold tracking-tight">
+			Recibe una crítica literaria<br />
+			<span class="text-amber-600">de tu libro</span>
+		</h1>
+		<p class="mt-4 leading-relaxed text-stone-600">
+			Sube un PDF. Extraeremos su texto y un modelo de IA analizará la obra
+			en el idioma original del documento: resumen, fortalezas, debilidades,
+			personajes, estilo y una puntuación final.
+		</p>
+	</section>
+
+	<PdfUploader />
+
+	<section class="mt-12 grid gap-4 sm:grid-cols-3">
+		<Feature
+			icon="📤"
+			title="Sube tu PDF"
+			description="Aceptamos cualquier PDF con texto, hasta 20 MB."
+		/>
+		<Feature
+			icon="🔍"
+			title="Extracción automática"
+			description="Leemos el texto de todas las páginas del documento."
+		/>
+		<Feature
+			icon="✍️"
+			title="Crítica en tu idioma"
+			description="La crítica se genera en el mismo idioma del libro."
+		/>
+	</section>
+</BaseLayout>
