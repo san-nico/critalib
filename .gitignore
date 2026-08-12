@@ -2,6 +2,7 @@
 docs/
 # build output
 dist/
+dist-preview/
 # vercel build output
 .vercel/
 # generated types
