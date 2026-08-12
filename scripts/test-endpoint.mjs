@@ -1,14 +1,15 @@
 import { readFileSync } from "node:fs";
 
 const filePath = process.argv[2];
+const baseUrl = process.argv[3] ?? "http://localhost:4321";
 const pdf = readFileSync(filePath);
 
 const form = new FormData();
 form.append("file", new Blob([pdf], { type: "application/pdf" }), "prueba.pdf");
 
-const res = await fetch("http://localhost:4321/api/critique", {
+const res = await fetch(`${baseUrl}/api/critique`, {
 	method: "POST",
-	headers: { Origin: "http://localhost:4321" },
+	headers: { Origin: baseUrl },
 	body: form,
 });
 console.log("status:", res.status);
