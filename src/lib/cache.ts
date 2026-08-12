@@ -16,9 +16,13 @@ const inflight = new Map<string, Promise<unknown>>();
 
 function resolveCacheDir(): string {
 	const envDir = process.env.CRITIQUE_CACHE_DIR;
-	return envDir
-		? path.resolve(envDir)
-		: path.join(process.cwd(), ".critique-cache");
+	if (envDir) {
+		return path.resolve(envDir);
+	}
+	if (process.env.VERCEL) {
+		return path.join("/tmp", "critique-cache");
+	}
+	return path.join(process.cwd(), ".critique-cache");
 }
 
 export function computeDocumentHash(data: Buffer): string {
